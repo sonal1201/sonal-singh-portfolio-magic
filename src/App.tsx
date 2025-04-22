@@ -1,5 +1,5 @@
 
-import { ThemeProvider } from "./components/ThemeProvider";
+import { ThemeProvider } from "next-themes";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -8,7 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
-  <ThemeProvider defaultTheme="light">
+  <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
     <TooltipProvider>
       <Toaster />
       <Sonner />

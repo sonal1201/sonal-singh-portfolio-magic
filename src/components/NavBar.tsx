@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -9,7 +8,6 @@ const NavBar = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  // Avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -59,7 +57,6 @@ const NavBar = () => {
             Sonal<span className="text-portfolio-pink">.dev</span>
           </motion.a>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item, i) => (
               <motion.a
@@ -76,9 +73,8 @@ const NavBar = () => {
               </motion.a>
             ))}
             
-            {/* Theme toggle */}
             <motion.button
-              onClick={toggleTheme}
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors duration-300"
               aria-label="Toggle theme"
               whileHover={{ rotate: 15 }}
@@ -95,10 +91,9 @@ const NavBar = () => {
             </motion.button>
           </div>
 
-          {/* Mobile menu button */}
           <div className="flex items-center md:hidden gap-4">
             <motion.button
-              onClick={toggleTheme}
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors duration-300"
               aria-label="Toggle theme"
               whileHover={{ rotate: 15 }}
@@ -128,7 +123,6 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* Mobile menu, show/hide based on menu state */}
       <motion.div
         className="md:hidden overflow-hidden"
         initial={{ height: 0 }}
