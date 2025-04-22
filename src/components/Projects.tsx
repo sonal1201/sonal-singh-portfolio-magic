@@ -19,7 +19,7 @@ const ProjectCard = ({
 }) => {
   return (
     <motion.div 
-      className="project-card" 
+      className="project-card group" 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -27,7 +27,7 @@ const ProjectCard = ({
       whileHover={{ y: -10, transition: { duration: 0.2 } }}
     >
       <motion.div 
-        className="h-48 bg-muted relative overflow-hidden"
+        className="h-48 bg-muted relative overflow-hidden group"
         whileHover={{ 
           scale: 1.05,
           transition: { duration: 0.3 }
@@ -49,13 +49,16 @@ const ProjectCard = ({
               <Server className="w-16 h-16" />
             </motion.div>
           )}
+          <div className="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+            <p className="text-sm text-foreground/90 text-center">
+              {description}
+            </p>
+          </div>
         </div>
       </motion.div>
       
       <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-foreground/70 mb-4 flex-grow">{description}</p>
-        
         <div className="mt-auto">
           <div className="flex flex-wrap gap-2 mb-4">
             {techStack.map((tech, techIndex) => (
