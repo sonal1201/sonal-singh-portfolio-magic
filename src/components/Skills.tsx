@@ -24,7 +24,7 @@ import { motion } from "framer-motion";
 const SkillCard = ({ skill, index }: { skill: { name: string; icon: JSX.Element }; index: number }) => {
   return (
     <motion.div 
-      className="skill-card group p-2"
+      className="skill-card group p-1"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -37,7 +37,7 @@ const SkillCard = ({ skill, index }: { skill: { name: string; icon: JSX.Element 
       >
         {skill.icon}
       </motion.div>
-      <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors duration-300">
+      <span className="text-xs font-medium text-foreground/80 group-hover:text-foreground transition-colors duration-300">
         {skill.name}
       </span>
     </motion.div>
@@ -104,7 +104,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-12 bg-gradient">
+    <section id="skills" className="py-8 bg-gradient">
       <div className="container mx-auto px-4 md:px-6">
         <motion.h2 
           className="section-title mx-auto"
@@ -116,7 +116,7 @@ const Skills = () => {
           My Skills
         </motion.h2>
         
-        <div className="mt-8 space-y-8">
+        <div className="mt-6 space-y-6">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div 
               key={category.title}
@@ -125,8 +125,8 @@ const Skills = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
             >
-              <h3 className="text-lg font-semibold mb-4 text-foreground/90">{category.title}</h3>
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
+              <h3 className="text-md font-semibold mb-3 text-foreground/90">{category.title}</h3>
+              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-1">
                 {category.skills.map((skill, skillIndex) => (
                   <SkillCard 
                     key={skill.name} 
